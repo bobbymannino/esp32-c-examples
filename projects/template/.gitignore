@@ -1,0 +1,7 @@
+# ESP IDF
+build
+.cache
+sdkconfig.old
+
+# Mac
+.DS_Store

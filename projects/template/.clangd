@@ -1,0 +1,11 @@
+CompileFlags:
+  CompilationDatabase: build
+  # GCC-only flags ESP-IDF passes that clang does not understand.
+  Remove:
+    - -fno-shrink-wrap # Disable moving function prologues/epilogues onto only the paths that need them.
+    - -fstrict-volatile-bitfields # Use the declared type's access width for volatile bit-fields (important for hardware registers).
+    - -fno-tree-switch-conversion # Disable converting switch-based assignments into indexed lookup tables.
+    - -fzero-init-padding-bits=* # Control zeroing of padding bits in aggregate initializers; * matches every option value.
+    - -fno-malloc-dce # Prevent eliminating malloc-family calls whose results are unused.
+  # Take builtin headers (stddef.h etc.) from the ESP GCC toolchain, so no machine-specific --resource-dir is needed.
+  BuiltinHeaders: QueryDriver

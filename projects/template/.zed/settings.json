@@ -1,0 +1,17 @@
+{
+  "languages": {
+    // sourcekit-lsp (Swift extension) uses Xcode's clang, which can't parse ESP-IDF code.
+    "C": { "language_servers": ["clangd", "!sourcekit-lsp", "..."] },
+    "C++": { "language_servers": ["clangd", "!sourcekit-lsp", "..."] },
+  },
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "arguments": [
+          // Let clangd query any Espressif GCC (xtensa or riscv) for its target and system headers.
+          "--query-driver=**/*-esp*-elf-gcc*",
+        ],
+      },
+    },
+  },
+}
